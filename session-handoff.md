@@ -4,8 +4,8 @@
 
 - Goal: Full-stack local recreation of `https://ngaychungdoi.com/` (Frontend on `http://localhost:3000`, Backend API on `http://localhost:3008`) with a validated 5-subsystem agent harness.
 - Current status: **ALL FEATURES COMPLETE** — `feat-001` through `feat-008` done and verified.
-- Branch / commit: `main` (`b1ddd85`) pushed to `https://github.com/ngocthoha/wedding-invitation.git`
-- Deployment: Connected to Vercel project `wedding-invitation` (auto-build triggered on push to `main`).
+- Branch / commit: `main` (`2d6cd60`) pushed to `https://github.com/ngocthoha/wedding-invitation.git`
+- Deployment: Connected to Vercel project `wedding-invitation` (auto-build triggered on push to `main`). Guide at `docs/DEPLOYMENT_GUIDE.md`.
 
 ## Completed This Session (2026-11-18 21:49)
 

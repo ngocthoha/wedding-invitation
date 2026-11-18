@@ -1,0 +1,69 @@
+{
+  "$schema": "./.agents/skills/harness-creator/templates/feature-list.schema.json",
+  "features": [
+    {
+      "id": "feat-001",
+      "name": "Production Asset & Stylesheet Synchronization",
+      "description": "Extract and sync 45 production CSS chunks (ngaychungdoi-all.css), 9 local WOFF2 fonts, brand SVG/WebP assets, and 4 production HTML templates via scripts/sync-public-assets.mjs.",
+      "dependencies": [],
+      "status": "done",
+      "evidence": "Verified by scripts/sync-public-assets.mjs and scripts/verify-harness.mjs (all 45 CSS chunks, 9 WOFF2 fonts, and 4 HTML templates present)."
+    },
+    {
+      "id": "feat-002",
+      "name": "Backend REST API & Persistent Storage (Port 3008)",
+      "description": "Implement all 23 api.ngaychungdoi.com REST endpoints (/health, /auth/*, /files/templates*, /cards*, /cards/:id/rsvp, /cards/:id/guestbook, /cards/:id/guests, /pay2s/*, /partner/stats) with JSON persistence in apps/api/data/db.json.",
+      "dependencies": ["feat-001"],
+      "status": "done",
+      "evidence": "Verified by npm test (GET /health 200, GET /files/templates 20 items, GET /cards/bmmd8nf8vm1i 200, POST/GET /cards/bmmd8nf8vm1i/rsvp 200) and REA Evidence ev_4dc186147324f5e92217aee4996b7820e634d3f14c6366246abf9b52491a8a96."
+    },
+    {
+      "id": "feat-003",
+      "name": "Desktop Landing Page, 3D Hero Coverflow & Create-Card Sheet (Port 3000)",
+      "description": "Serve / with sticky glassmorphic navbar, interactive 3D perspective HeroCardSlider coverflow carousel, scroll-spy navigation, AOS scroll reveal engine, and interactive Create-Card modal sheet.",
+      "dependencies": ["feat-001", "feat-002"],
+      "status": "done",
+      "evidence": "Verified at 1440x900 via REA browser scenario ev_5ba20cbe0fd90db2ada211790172f7541976b060f0b2ced7502180656d91a124 (steps 1-7) and npm test."
+    },
+    {
+      "id": "feat-004",
+      "name": "Template Catalog (/mau-thiep) & Anti-DevTools Neutralization",
+      "description": "Render /mau-thiep template catalog with 20 wedding card templates, mode switcher (Full / Standard / Basic), and category filtering without production anti-devtools redirects.",
+      "dependencies": ["feat-002", "feat-003"],
+      "status": "done",
+      "evidence": "Verified via REA browser scenario ev_5ba20cbe0fd90db2ada211790172f7541976b060f0b2ced7502180656d91a124 (steps 8-9) and npm test."
+    },
+    {
+      "id": "feat-005",
+      "name": "3D Wedding Card Opening Scenes, Full 12-Section Card & Live RSVP (/mau-thiep/template/:id)",
+      "description": "Implement 3D Royal Red seal break splash, 5-layer 3D Opening Envelope with mouse-tilt parallax, full 12-section wedding card reveal (data-card-public-ready=true), BGM audio toggle, snow particle video, and live RSVP/Guestbook submission to port 3008.",
+      "dependencies": ["feat-002", "feat-004"],
+      "status": "done",
+      "evidence": "Verified via REA browser scenario ev_4dc186147324f5e92217aee4996b7820e634d3f14c6366246abf9b52491a8a96 (steps 0-8, 0 failed network transactions) and npm test."
+    },
+    {
+      "id": "feat-006",
+      "name": "3D LED Wedding Stage (/man-hinh-led-dam-cuoi) & Card Dashboard (/my/card)",
+      "description": "Render /man-hinh-led-dam-cuoi 3D LED stage with truss, spotlight cones, and interactive Canvas Nebula particle engine, plus /my/card management dashboard displaying live RSVP and Guestbook counts.",
+      "dependencies": ["feat-002", "feat-003"],
+      "status": "done",
+      "evidence": "Verified via REA browser scenario ev_5ba20cbe0fd90db2ada211790172f7541976b060f0b2ced7502180656d91a124 (steps 16-19) and npm test."
+    },
+    {
+      "id": "feat-007",
+      "name": "Interactive Card Builder / Editor (/card/create/form)",
+      "description": "Full production-matched card editor at /card/create/form?template=:id. Left column: live interactive phone preview of the actual wedding card. Right column: 23 collapsible form sections (Giao diện → Ảnh thu nhỏ chia sẻ URL). Features: accordion section toggle, live name/color binding to phone preview, 9-item opening effect grid with inline card preview, drag-and-drop section reorder, URL share modal, BGM upload, theme picker modal, 5 floating quick-jump pencil buttons, Lưu thiệp PUT /cards/:id with save banner. Implemented in apps/web/src/card-editor-view.js (104KB), apps/web/src/server.js route /card/create/form, apps/web/public/app-client.js initCardEditor() (~500 lines).",
+      "dependencies": ["feat-005", "feat-006"],
+      "status": "done",
+      "evidence": "Verified by npm run check (exit 0), npm test (100/100), and browser scenario (14 steps): editor loads at http://localhost:3000/card/create/form?template=bmmd8nf8vm1i, all 23 form sections present in DOM, Lưu thiệp PUT /cards/bmmd8nf8vm1i returns 200, save banner '✓ Đã lưu toàn bộ thay đổi' appears. HTML renders 37 matches for card-editor-root/edit-form-list/section-form. Screenshots: local_editor_1 through local_editor_14 in artifact directory."
+    },
+    {
+      "id": "feat-008",
+      "name": "Supabase Database Migration & Vercel Serverless Deployment Adapter",
+      "description": "Provision Supabase project wedding-invitation (rwudhtiqamsdietodurx) with 7 tables (app_state, users, templates, cards, guests, rsvps, guestbook), seed all 20 templates and initial cards/RSVPs/wishes, add zero-dependency PostgREST sync adapter (apps/api/src/supabase-store.js), and add Vercel serverless routing (vercel.json + api/index.js).",
+      "dependencies": ["feat-002", "feat-007"],
+      "status": "done",
+      "evidence": "Verified via supabase_mcp apply_migration and execute_sql (1 user, 20 templates, 2 cards, 4 guests, 3 rsvps, 5 guestbook wishes, 1 app_state row in rwudhtiqamsdietodurx) and ./init.sh (14 core files verified, 100/100 harness validation)."
+    }
+  ]
+}

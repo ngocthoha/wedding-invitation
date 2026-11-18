@@ -1,0 +1,9 @@
+{
+  "name": "@wedding/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  }
+}

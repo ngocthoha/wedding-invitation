@@ -2,7 +2,7 @@
 
 ## Current State
 
-**Last Updated:** 2026-11-18 21:49
+**Last Updated:** 2026-11-19 00:04
 **Session ID:** 197daebf-4f09-43f4-acfc-ef977bccd8c2
 **Active Feature:** ALL FEATURES COMPLETE (feat-001 through feat-008)
 
@@ -18,6 +18,7 @@
 - [x] `feat-006`: Implemented `/man-hinh-led-dam-cuoi` 3D LED Stage + Canvas Nebula particle engine and `/my/card` dashboard
 - [x] `feat-007`: Implemented `/card/create/form` Interactive Card Builder / Editor with 23 collapsible sections and live phone preview
 - [x] `feat-008`: Provisioned Supabase Postgres schema & seed data (`wedding-invitation` / `rwudhtiqamsdietodurx`), added `apps/api/src/supabase-store.js`, and added Vercel serverless configuration (`vercel.json`, `api/index.js`, `.env.example`)
+- [x] Created `README.md` documenting features, architecture, local testing, Supabase integration, and Vercel deployment; pushed to `origin/main` (`b1ddd85`) to trigger Vercel deployment.
 - [x] Created and validated project agent harness (`AGENTS.md`, `feature_list.json`, `progress.md`, `session-handoff.md`, `init.sh`, and `scripts/verify-harness.mjs`)
 
 ### What's In Progress
